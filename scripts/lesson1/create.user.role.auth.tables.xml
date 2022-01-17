@@ -7,11 +7,27 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
     http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
 
-    <changeSet id="before_create_table.ACCOUNT_USER" author="zalyaletdinov.marat" context="postgresql" labels="account_user_table">
+    <changeSet  author="yury.kropotkin"  id="dropTable-account_user">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="account_user"/>
+        </preConditions>
+        <dropTable  cascadeConstraints="true"
+                    schemaName="public"
+                    tableName="ACCOUNT_USER"/>
+    </changeSet>
+    <changeSet  author="yury.kropotkin"  id="dropTable-cart_product">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="cart_product"/>
+        </preConditions>
+        <dropTable  cascadeConstraints="true"
+                    schemaName="public"
+                    tableName="CART_PRODUCT"/>
+    </changeSet>
+    <changeSet id="before_create_table.ACCOUNT_USER" author="yury.kropotkin" context="postgresql" labels="account_user_table">
         <tagDatabase tag="before_create_account_user_table"/>
     </changeSet>
 
-    <changeSet id="create_table.ACCOUNT_USER" author="zalyaletdinov.marat" context="postgresql" labels="account_user">
+    <changeSet id="create_table.ACCOUNT_USER" author="yury.kropotkin" context="postgresql" labels="account_user">
         <createTable tableName="ACCOUNT_USER">
             <column name="ID" type="BIGSERIAL">
                 <constraints primaryKey="true" nullable="false"/>
@@ -43,11 +59,16 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="before_create_table.ACCOUNT_ROLE" author="zalyaletdinov.marat" context="postgresql" labels="account_role_table">
+    <changeSet id="before_create_table.ACCOUNT_ROLE" author="yury.kropotkin" context="postgresql" labels="account_role_table">
         <tagDatabase tag="before_create_account_role_table"/>
     </changeSet>
 
-    <changeSet id="create_table.ACCOUNT_ROLE" author="zalyaletdinov.marat" context="postgresql" labels="account_role">
+    <changeSet id="create_table.ACCOUNT_ROLE" author="yury.kropotkin" context="postgresql" labels="account_role">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ACCOUNT_ROLE"/>
+            </not>
+        </preConditions>
         <createTable tableName="ACCOUNT_ROLE">
             <column name="ID" type="BIGSERIAL">
                 <constraints primaryKey="true" nullable="false"/>
@@ -58,11 +79,16 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="before_create_table.USER_ROLE" author="zalyaletdinov.marat" context="postgresql" labels="user_role_table">
+    <changeSet id="before_create_table.USER_ROLE" author="yury.kropotkin" context="postgresql" labels="user_role_table">
         <tagDatabase tag="before_create_user_role_table"/>
     </changeSet>
 
-    <changeSet id="create_table.USER_ROLE" author="zalyaletdinov.marat" context="postgresql" labels="user_role">
+    <changeSet id="create_table.USER_ROLE" author="yury.kropotkin" context="postgresql" labels="user_role">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="USER_ROLE"/>
+            </not>
+        </preConditions>
         <createTable tableName="USER_ROLE">
             <column name="USER_ID" type="BIGINT">
                 <constraints nullable="false"/>
@@ -81,11 +107,16 @@
                                  referencedTableName="ACCOUNT_ROLE" referencedColumnNames="ID"/>
     </changeSet>
 
-    <changeSet id="before_create_table.AUTHORITY" author="zalyaletdinov.marat" context="postgresql" labels="authority_table">
+    <changeSet id="before_create_table.AUTHORITY" author="yury.kropotkin" context="postgresql" labels="authority_table">
         <tagDatabase tag="before_create_authority_table"/>
     </changeSet>
 
-    <changeSet id="create_table.AUTHORITY" author="zalyaletdinov.marat" context="postgresql" labels="authority">
+    <changeSet id="create_table.AUTHORITY" author="yury.kropotkin" context="postgresql" labels="authority">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="AUTHORITY"/>
+            </not>
+        </preConditions>
         <createTable tableName="AUTHORITY">
             <column name="ID" type="BIGSERIAL">
                 <constraints primaryKey="true" nullable="false"/>
@@ -96,7 +127,12 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="create_table.ROLE_AUTHORITY" author="zalyaletdinov.marat" context="postgresql" labels="role_authority">
+    <changeSet id="create_table.ROLE_AUTHORITY" author="yury.kropotkin" context="postgresql" labels="role_authority">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ROLE_AUTHORITY"/>
+            </not>
+        </preConditions>
         <createTable tableName="ROLE_AUTHORITY">
             <column name="ROLE_ID" type="BIGINT">
                 <constraints nullable="false"/>
