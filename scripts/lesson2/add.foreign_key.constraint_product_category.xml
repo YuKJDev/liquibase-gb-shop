@@ -10,7 +10,14 @@
     <changeSet id="before_addForeignKeyConstraints_product_category_table" author="yury.kropotkin" context="postgresql">
         <tagDatabase tag="before_addForeignKeyConstraints_product_category_table"/>
     </changeSet>
+
     <changeSet id="addForeignKeyConstraint.PRODUCT_CATEGORY" author="yury.kropotkin" context="postgresql" labels="product_category_table_addForeignKeyConstraint">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK_PRODUCT_CATEGORY_PRODUCT"/>
+                <foreignKeyConstraintExists foreignKeyName="FK_PRODUCT_CATEGORY_CATEGORY"/>
+            </not>
+        </preConditions>
         <addForeignKeyConstraint baseTableName="PRODUCT_CATEGORY" baseColumnNames="PRODUCT_ID" constraintName="FK_PRODUCT_CATEGORY_PRODUCT"
                                  referencedTableName="PRODUCT" referencedColumnNames="ID"/>
 
