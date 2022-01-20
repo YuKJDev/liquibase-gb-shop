@@ -7,16 +7,16 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
     http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
 
-    <changeSet id="before_manufacturer_add_service_info_columns" author="kropotov.artem" context="postgresql"
-               labels="manufacturer_VERSION, manufacturer_CREATED_BY, manufacturer_CREATED_DATE,
-                        manufacturer_LAST_MODIFIED_BY, manufacturer_LAST_MODIFIED_DATE">
-        <tagDatabase tag="before_manufacturer_add_service_info_columns"/>
+    <changeSet id="before_category_add_service_info_columns" author="yury.kropotkin" context="postgresql"
+               labels="category_VERSION, category_CREATED_BY, category_CREATED_DATE,
+                        category_LAST_MODIFIED_BY, category_LAST_MODIFIED_DATE">
+        <tagDatabase tag="before_category_add_service_info_columns"/>
     </changeSet>
 
-    <changeSet id="manufacturer_add_service_info_columns" author="kropotov.artem" context="postgresql"
-               labels="manufacturer_VERSION, manufacturer_CREATED_BY, manufacturer_CREATED_DATE,
-                        manufacturer_LAST_MODIFIED_BY, manufacturer_LAST_MODIFIED_DATE">
-        <addColumn tableName="MANUFACTURER">
+    <changeSet id="category_add_service_info_columns" author="yury.kropotkin" context="postgresql"
+               labels="category_VERSION, category_CREATED_BY, category_CREATED_DATE,
+                        category_LAST_MODIFIED_BY, category_LAST_MODIFIED_DATE">
+        <addColumn tableName="CATEGORY">
             <column name="VERSION" type="INT" defaultValue="0">
                 <constraints nullable="false"/>
             </column>
