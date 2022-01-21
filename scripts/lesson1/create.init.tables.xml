@@ -62,10 +62,6 @@
 
         <addPrimaryKey tableName="PRODUCT_CATEGORY" columnNames="PRODUCT_ID, CATEGORY_ID"/>
 
-        <addForeignKeyConstraint baseTableName="PRODUCT_CATEGORY" baseColumnNames="PRODUCT_ID" constraintName="FK_PRODUCT_CATEGORY_PRODUCT"
-                                 referencedTableName="PRODUCT" referencedColumnNames="ID"/>
 
-        <addForeignKeyConstraint baseTableName="PRODUCT_CATEGORY" baseColumnNames="CATEGORY_ID" constraintName="FK_PRODUCT_CATEGORY_CATEGORY"
-                                 referencedTableName="CATEGORY" referencedColumnNames="ID"/>
     </changeSet>
 </databaseChangeLog>

@@ -6,22 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
     http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
 
-    <changeSet  author="yury.kropotkin"  id="dropTable-account_user">
-        <preConditions onFail="MARK_RAN">
-            <tableExists tableName="account_user"/>
-        </preConditions>
-        <dropTable  cascadeConstraints="true"
-                    schemaName="public"
-                    tableName="ACCOUNT_USER"/>
-    </changeSet>
-    <changeSet  author="yury.kropotkin"  id="dropTable-cart_product">
-        <preConditions onFail="MARK_RAN">
-            <tableExists tableName="cart_product"/>
-        </preConditions>
-        <dropTable  cascadeConstraints="true"
-                    schemaName="public"
-                    tableName="CART_PRODUCT"/>
-    </changeSet>
+
     <changeSet id="before_create_table.ACCOUNT_USER" author="yury.kropotkin" context="postgresql" labels="account_user_table">
         <tagDatabase tag="before_create_account_user_table"/>
     </changeSet>

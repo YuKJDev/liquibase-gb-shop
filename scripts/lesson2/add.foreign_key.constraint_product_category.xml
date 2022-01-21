@@ -25,6 +25,4 @@
                                  referencedTableName="CATEGORY" referencedColumnNames="ID"/>
     </changeSet>
 
-
-
 </databaseChangeLog>
